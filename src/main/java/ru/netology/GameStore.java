@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
+//Ivan fixes the code after finding of bugs
 public class GameStore {
     private List<Game> games = new ArrayList<>();
 
