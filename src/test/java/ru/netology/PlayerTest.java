@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class PlayerTest {
-//Ivan looks for bugs
+    //Ivan looks for bugs
     @Test
     public void shouldSumGenreIfOneGame() {
         GameStore store = new GameStore();
@@ -20,6 +20,7 @@ public class PlayerTest {
         int actual = player.sumGenre(game.getGenre());
         assertEquals(expected, actual);
     }
+
     @Test
     public void shouldSumGenreIfSomeGames() {
         GameStore store = new GameStore();
@@ -36,6 +37,7 @@ public class PlayerTest {
         int actual = player.sumGenre("Аркады");
         assertEquals(expected, actual);
     }
+
     @Test
     public void shouldSumGenreIfNoGameByGenre() {
         GameStore store = new GameStore();
@@ -52,6 +54,7 @@ public class PlayerTest {
         int actual = player.sumGenre("Каскады");
         assertEquals(expected, actual);
     }
+
     @Test
     public void shouldThrowErrorIfNoInstallGame() {
         GameStore store = new GameStore();
@@ -63,6 +66,7 @@ public class PlayerTest {
             player.play(game, 2);
         });
     }
+
     @Test
     public void shouldAddExistGameForPlayer() {
         GameStore store = new GameStore();
@@ -86,23 +90,28 @@ public class PlayerTest {
         Game game = store.publishGame("Нетология Баттл Онлайн", "Аркады");
 
         Player player = new Player("Petya");
+        player.installGame(game);
 
         int expected = 5;
         int actual = player.play(game, 5);
         assertEquals(expected, actual);
     }
+
     @Test
     public void shouldShowHoursIfRepeatedGame() {
         GameStore store = new GameStore();
         Game game = store.publishGame("Нетология Баттл Онлайн", "Аркады");
 
         Player player = new Player("Petya");
+        player.installGame(game);
+
         player.play(game, 5);
 
         int expected = 15;
         int actual = player.play(game, 10);
         assertEquals(expected, actual);
     }
+
     @Test
     public void shouldShowMostPlayerByGenreIfNobodyPlayInGenre() {
         GameStore store = new GameStore();
@@ -115,6 +124,7 @@ public class PlayerTest {
         Game actual = player.mostPlayerByGenre("Аркады");
         assertEquals(expected, actual);
     }
+
     //не понятно по условию:
     // Метод принимает жанр и возвращает игру этого жанра, в которую играли больше всего
     //ИГРАЛИ- т.е. сумма часов по всем играм жанра (из HashMap playerTime
@@ -136,6 +146,7 @@ public class PlayerTest {
         Game actual = player.mostPlayerByGenre("Аркады");
         assertEquals(expected, actual);
     }
+
     @Test
     public void shouldShowMostPlayerByGenreIfSomeGameInGenre() {
         GameStore store = new GameStore();
@@ -153,6 +164,7 @@ public class PlayerTest {
         Game actual = player1.mostPlayerByGenre("Аркады");
         assertEquals(expected, actual);
     }
+
     @Test
     public void shouldShowMostPlayerByGenreIfSomeGamesInGenreHaveMax() {
         GameStore store = new GameStore();
@@ -165,14 +177,15 @@ public class PlayerTest {
         player1.play(game1, 5);
         player1.play(game2, 5);
 
-        Game expected = game1;
+        Game expected = game2;
         //тут не понятно какой результат должен быть, т.к. не указано что возвращается, если две и более игры имеют максимум
         //ответ Филиппа- любую
         Game actual = player1.mostPlayerByGenre("Аркады");
         assertEquals(expected, actual);
     }
+
     @Test
-    public void shouldShowMostPlayerByGenreIfNoGenre() {
+    public void shouldShowMostPlayerByGenreIfNoFindGenre() {
         GameStore store = new GameStore();
         Game game = store.publishGame("Нетология Баттл Онлайн", "Аркады");
 
