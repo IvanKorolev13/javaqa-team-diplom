@@ -37,6 +37,7 @@ public class PlayerTest {
         int actual = player.sumGenre("Аркады");
         assertEquals(expected, actual);
     }
+
     @Test
     public void shouldSumGenreIfNoGameByGenre() {
         GameStore store = new GameStore();
@@ -53,6 +54,7 @@ public class PlayerTest {
         int actual = player.sumGenre("Каскады");
         assertEquals(expected, actual);
     }
+
     @Test
     public void shouldThrowErrorIfNoInstallGame() {
         GameStore store = new GameStore();
@@ -64,6 +66,7 @@ public class PlayerTest {
             player.play(game, 2);
         });
     }
+
     @Test
     public void shouldAddExistGameForPlayer() {
         GameStore store = new GameStore();
@@ -93,6 +96,7 @@ public class PlayerTest {
         int actual = player.play(game, 5);
         assertEquals(expected, actual);
     }
+
     @Test
     public void shouldShowHoursIfRepeatedGame() {
         GameStore store = new GameStore();
@@ -119,11 +123,7 @@ public class PlayerTest {
         Game actual = player.mostPlayerByGenre("Аркады");
         assertEquals(expected, actual);
     }
-    //не понятно по условию:
-    // Метод принимает жанр и возвращает игру этого жанра, в которую играли больше всего
-    //ИГРАЛИ- т.е. сумма часов по всем играм жанра (из HashMap playerTime
-    //или сумма часов только по одному играку по его играм
-    //уточнил у Филиппа- игрок говорит про себя.
+
     @Test
     public void shouldShowMostPlayerByGenreIfOneGameInGenre() {
         GameStore store = new GameStore();
@@ -140,6 +140,7 @@ public class PlayerTest {
         Game actual = player.mostPlayerByGenre("Аркады");
         assertEquals(expected, actual);
     }
+
     @Test
     public void shouldShowMostPlayerByGenreIfSomeGameInGenre() {
         GameStore store = new GameStore();
@@ -157,6 +158,7 @@ public class PlayerTest {
         Game actual = player1.mostPlayerByGenre("Аркады");
         assertEquals(expected, actual);
     }
+
     @Test
     public void shouldShowMostPlayerByGenreIfSomeGamesInGenreHaveMax() {
         GameStore store = new GameStore();
@@ -170,11 +172,10 @@ public class PlayerTest {
         player1.play(game2, 5);
 
         Game expected = game2;
-        //тут не понятно какой результат должен быть, т.к. не указано что возвращается, если две и более игры имеют максимум
-        //ответ Филиппа- любую
         Game actual = player1.mostPlayerByGenre("Аркады");
         assertEquals(expected, actual);
     }
+
     @Test
     public void shouldShowMostPlayerByGenreIfNoGenre() {
         GameStore store = new GameStore();
@@ -188,6 +189,4 @@ public class PlayerTest {
         Game actual = player.mostPlayerByGenre("Каскады");
         assertEquals(expected, actual);
     }
-
-    // другие ваши тесты
 }

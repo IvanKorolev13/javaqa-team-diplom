@@ -13,12 +13,8 @@ public class Player {
      */
     private Map<Game, Integer> playedTime = new HashMap<>();
 
-    public Player(String name) { // Player name = "Вася"
+    public Player(String name) {
         this.name = name;
-    }
-
-    public String getName() {
-        return name;
     }
 
     /**
@@ -28,7 +24,7 @@ public class Player {
     public void installGame(Game game) {
         if (playedTime.containsKey(game)) {
         } else {
-            playedTime.put(game,0);
+            playedTime.put(game, 0);
         }
     }
 
@@ -44,7 +40,7 @@ public class Player {
         if (playedTime.containsKey(game)) {
             playedTime.put(game, playedTime.get(game) + hours);
         } else {
-            throw new NotRegisteredException("Игра "+ game + " не установлена");
+            throw new NotRegisteredException("Игра " + game + " не установлена");
         }
         return playedTime.get(game);
     }
@@ -53,12 +49,9 @@ public class Player {
      * Метод принимает жанр игры (одно из полей объекта игры) и
      * суммирует время, проигранное во все игры этого жанра этим игроком
      */
-    // Сам метод работает адекватно, но требуется в методе play в строчке playedTime.put(game, playedTime.get(game) добавить "+ hours" для адекватной работы теста
-    public int sumGenre(String genre) { //метод equals(genre) вызывается из класса Game, а тот метод принимает данные
-        // типа Object => нам нужно поменять тип данных в параметре метода sumGenre со String на Object
+    public int sumGenre(String genre) {
         int sum = 0;
-        for (Game game : playedTime.keySet()) { // имеется ввиду, что переменная game принимает значения ключей из словаря с типом данных
-            // Game, что нам и нужно, так как там храниться жанр игры.
+        for (Game game : playedTime.keySet()) {
             if (game.getGenre().equals(genre)) {
                 sum += playedTime.get(game);
             } else {

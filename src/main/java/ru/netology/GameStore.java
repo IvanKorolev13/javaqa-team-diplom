@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 public class GameStore {
-    private List<Game> games = new ArrayList<>(); //<Game> - тип данных из объекта Game - создается список игр тип данных Game.
+    private List<Game> games = new ArrayList<>();
 
     /**
      * Информация о том, какой игрок сколько играл в игры этого каталога
@@ -14,12 +14,9 @@ public class GameStore {
      * Значение - суммарное количество часов в игры этого каталога
      */
     private Map<String, Integer> playedTime = new HashMap<>();
+
     public Map<String, Integer> getPlayedTime() {
         return playedTime;
-    }
-
-    public void setPlayedTime(Map<String, Integer> playedTime) {
-        this.playedTime = playedTime;
     }
 
     /**
@@ -38,7 +35,7 @@ public class GameStore {
      */
     public boolean containsGame(Game game) {
         for (int i = 1; i < games.size(); i++) {
-            if (games.get(i-1).equals(game)) {
+            if (games.get(i - 1).equals(game)) {
                 return true;
             }
         }
@@ -51,8 +48,8 @@ public class GameStore {
      * суммироваться с прошлым значением для этого игрока
      */
     public void addPlayTime(String playerName, int hours) {
-        if (playedTime.containsKey(playerName)) {      //проверяет есть ли ключ
-            playedTime.put(playerName, playedTime.get(playerName)+hours); //+ hours
+        if (playedTime.containsKey(playerName)) {
+            playedTime.put(playerName, playedTime.get(playerName));
         } else {
             playedTime.put(playerName, hours);
         }
@@ -62,18 +59,18 @@ public class GameStore {
      * Ищет имя игрока, который играл в игры этого каталога больше всего
      * времени. Если игроков нет, то возвращется null
      */
-//    public String getMostPlayer(String playerName) {
-//        int mostTime = 1;
-//        String bestPlayer = null;
-//        for (String playerName : playedTime.keySet()) {
-//            int playerTime = playedTime.get(playerName);
-//            if (playerTime > mostTime) {
-//                mostTime = playerTime;
-//                bestPlayer = playerName;
-//            }
-//        }
-//        return bestPlayer;
-//    }
+    public String getMostPlayer() {
+        int mostTime = 1;
+        String bestPlayer = null;
+        for (String playerName : playedTime.keySet()) {
+            int playerTime = playedTime.get(playerName);
+            if (playerTime > mostTime) {
+                mostTime = playerTime;
+                bestPlayer = playerName;
+            }
+        }
+        return bestPlayer;
+    }
 
     /**
      * Суммирует общее количество времени всех игроков, проведённого
@@ -82,6 +79,4 @@ public class GameStore {
     public int getSumPlayedTime() {
         return 0;
     }
-
-
 }
