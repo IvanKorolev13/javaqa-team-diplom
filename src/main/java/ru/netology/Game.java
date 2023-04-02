@@ -37,6 +37,7 @@ public class Game {
 
     @Override
     public int hashCode() {
+
         return Objects.hash(title, genre, store);
     }
 }
