@@ -17,6 +17,14 @@ public class GameStoreTest {
     }
 
     @Test
+    public void shouldFindGamIfHashMapHasAFewAddedGames() {
+        GameStore store = new GameStore();
+        Game game1 = store.publishGame("Нетология Баттл Онлайн", "Аркады");
+        Game game2 = store.publishGame("Нетология Баттл Онлайн 2", "Аркады");
+
+        assertTrue(store.containsGame(game2));
+    }
+    @Test
     public void shouldFalseIfCheckNoAddedGame() {
         GameStore store = new GameStore();
         Game game1 = store.publishGame("Нетология Баттл Онлайн", "Аркады");
