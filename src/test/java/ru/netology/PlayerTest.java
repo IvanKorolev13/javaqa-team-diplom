@@ -163,29 +163,30 @@ public class PlayerTest {
         Game actual = player1.mostPlayerByGenre("Аркады");
         assertEquals(expected, actual);
     }
-/*
-    @Test
-    public void shouldShowMostPlayerByGenreIfSomeGamesInGenreHaveMax() {
-        GameStore store = new GameStore();
-        Game game1 = store.publishGame("Нетология Баттл Онлайн", "Аркады");
-        Game game2 = store.publishGame("Нетология Диплом", "Аркады");
 
-        Player player1 = new Player("Petya");
-        player1.installGame(game1);
-        player1.play(game1, 5);
-        player1.installGame(game2);
-        player1.play(game2, 5);
+    /*
+        @Test
+        public void shouldShowMostPlayerByGenreIfSomeGamesInGenreHaveMax() {
+            GameStore store = new GameStore();
+            Game game1 = store.publishGame("Нетология Баттл Онлайн", "Аркады");
+            Game game2 = store.publishGame("Нетология Диплом", "Аркады");
 
-        Game expected = game1;
-        //тут не понятно какой результат должен быть, т.к. не указано что возвращается, если две и более игры имеют максимум
-        //ответ Филиппа- любую
-        Game actual = player1.mostPlayerByGenre("Аркады");
-        assertEquals(expected, actual);
-    }
-    //при дебаге тест проходит, если запускать без дебага и mvn- проваливается.
-    //дебаг: expected = Game@1772 (game1),actual = Game@1772 (game1)
-    //без дебага: expected = Game@2fdb9f70 ,actual = Game@679b1112
-*/
+            Player player1 = new Player("Petya");
+            player1.installGame(game1);
+            player1.play(game1, 5);
+            player1.installGame(game2);
+            player1.play(game2, 5);
+
+            Game expected = game1;
+            //тут не понятно какой результат должен быть, т.к. не указано что возвращается, если две и более игры имеют максимум
+            //ответ Филиппа- любую
+            Game actual = player1.mostPlayerByGenre("Аркады");
+            assertEquals(expected, actual);
+        }
+        //при дебаге тест проходит, если запускать без дебага и mvn- проваливается.
+        //дебаг: expected = Game@1772 (game1),actual = Game@1772 (game1)
+        //без дебага: expected = Game@2fdb9f70 ,actual = Game@679b1112
+    */
     @Test
     public void shouldShowMostPlayerByGenreIfNoFindGenre() {
         GameStore store = new GameStore();
